@@ -29,7 +29,7 @@ function App() {
 
     try {
       throw new Error("Test Better Stack");
-    } catch (err) {
+    } catch (err: any) {
       logger.error(err.message, {
         stack: err.stack,
       });
