@@ -1,21 +1,21 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
-import Form from "./components/From/Form";
+// import Form from "./components/From/Form";
 import { getSum } from "./helpers/helperFunctions";
-import type { CheckedAnswers, Form as FormType } from "./types/form.types";
+// import type { CheckedAnswers, Form as FormType } from "./types/form.types";
 import Button from "./components/Button/Button";
-import { useQuery, useMutation } from "@tanstack/react-query";
-import { getForms, sendForms } from "./api/form.api";
+import { useMutation } from "@tanstack/react-query";
+import { sendForms } from "./api/form.api";
 // import { logger } from "./lib/betterstack.ts";
 import { usePostHog } from "@posthog/react";
 
-const storage = localStorage.getItem("checkedAnswers") as string;
+// const storage = localStorage.getItem("checkedAnswers") as string;
 
 function App() {
-  const [checkedAnswers, setCheckedAnswers] = useState<CheckedAnswers>(
-    new Map(JSON.parse(storage) ?? []),
-  );
-  const [total, setTotal] = useState<Record<number, number>>({
+  // const [checkedAnswers, setCheckedAnswers] = useState<CheckedAnswers>(
+  //   new Map(JSON.parse(storage) ?? []),
+  // );
+  const [total] = useState<Record<number, number>>({
     1: 0,
     2: 0,
     3: 0,
@@ -36,12 +36,13 @@ function App() {
   //   }
   // }, []);
 
-  const { data: forms } = useQuery<FormType[]>({
-    queryKey: ["forms"],
-    queryFn: getForms,
-  });
+  // const { data: forms } = useQuery<FormType[]>({
+  //   queryKey: ["forms"],
+  //   queryFn: getForms,
+  // });
 
-  const { mutate: sendRequest, isPending } = useMutation({
+  const { mutate: sendRequest } = useMutation({
+    // const { mutate: sendRequest, isPending } = useMutation({
     mutationFn: sendForms,
     onSuccess: () => {
       alert("submitted correctly!");
