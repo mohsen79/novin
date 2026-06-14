@@ -39,15 +39,15 @@ createRoot(document.getElementById("root")!).render(
   // </StrictMode>
 );
 
-window.addEventListener("error", (event) => {
-  logger.error("Global JS Error", {
-    message: event.message,
-    stack: event.error?.stack,
-  });
-});
+// window.addEventListener("error", (event) => {
+//   logger.error("Global JS Error", {
+//     message: event.message,
+//     stack: event.error?.stack,
+//   });
+// });
 
-window.addEventListener("unhandledrejection", (event) => {
-  logger.error("Unhandled Promise Rejection", {
-    reason: event.reason,
-  });
-});
+// window.addEventListener("unhandledrejection", (event) => {
+//   logger.error("Unhandled Promise Rejection", {
+//     reason: event.reason,
+//   });
+// });

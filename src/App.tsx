@@ -6,7 +6,7 @@ import type { CheckedAnswers, Form as FormType } from "./types/form.types";
 import Button from "./components/Button/Button";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { getForms, sendForms } from "./api/form.api";
-import { logger } from "./lib/betterstack.ts";
+// import { logger } from "./lib/betterstack.ts";
 import { usePostHog } from "@posthog/react";
 
 const storage = localStorage.getItem("checkedAnswers") as string;
@@ -22,19 +22,19 @@ function App() {
   });
   const posthog = usePostHog();
 
-  useEffect(() => {
-    logger.info("User clicked button", {
-      button: "checkout",
-    });
+  // useEffect(() => {
+  //   logger.info("User clicked button", {
+  //     button: "checkout",
+  //   });
 
-    try {
-      throw new Error("Test Better Stack");
-    } catch (err: any) {
-      logger.error(err.message, {
-        stack: err.stack,
-      });
-    }
-  }, []);
+  //   try {
+  //     throw new Error("Test Better Stack");
+  //   } catch (err: any) {
+  //     logger.error(err.message, {
+  //       stack: err.stack,
+  //     });
+  //   }
+  // }, []);
 
   const { data: forms } = useQuery<FormType[]>({
     queryKey: ["forms"],
