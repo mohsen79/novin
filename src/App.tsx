@@ -54,32 +54,39 @@ function App() {
   const result = getSum(total);
 
   return (
-    <section className="app">
-      {forms?.map((form) => (
-        <Form
-          key={form.id}
-          id={Number(form.id)}
-          setCheckedAnswers={setCheckedAnswers}
-          questions={form.questions}
-          setTotal={setTotal}
-          checkedAnswers={checkedAnswers}
-        />
-      ))}
-      <div>
-        <h2>total: {result}</h2>
-        {isPending ? (
-          "loading"
-        ) : (
-          <Button
-            text="send request"
-            action={() => {
-              posthog.capture("button_clicked", { button_name: "signup" });
-              sendRequest(result);
-            }}
-          />
-        )}
-      </div>
-    </section>
+    <Button
+      text="send request"
+      action={() => {
+        posthog.capture("button_clicked", { button_name: "signup" });
+        sendRequest(result);
+      }}
+    />
+    // <section className="app">
+    //   {forms?.map((form) => (
+    //     <Form
+    //       key={form.id}
+    //       id={Number(form.id)}
+    //       setCheckedAnswers={setCheckedAnswers}
+    //       questions={form.questions}
+    //       setTotal={setTotal}
+    //       checkedAnswers={checkedAnswers}
+    //     />
+    //   ))}
+    //   <div>
+    //     <h2>total: {result}</h2>
+    //     {isPending ? (
+    //       "loading"
+    //     ) : (
+    //       <Button
+    //         text="send request"
+    //         action={() => {
+    //           posthog.capture("button_clicked", { button_name: "signup" });
+    //           sendRequest(result);
+    //         }}
+    //       />
+    //     )}
+    //   </div>
+    // </section>
   );
 }
 
